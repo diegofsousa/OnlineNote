@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block titulo %}
+		
+	{% endblock titulo %}</title>
+	{% load staticfiles %}
+	 <!-- Compiled and minified CSS -->
+	  <link rel="stylesheet" href="{% static 'nota/css/materialize.min.css' %}">
+
+	 
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <link rel="stylesheet" href="{% static 'nota/css/custom.css' %}">
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+          
+</head>
+<body>
+{% if request.user.is_authenticated %}
+<ul id="dropdown1" class="dropdown-content left">
+	<li><a href="/logout/">Sair</a></li>
+	<li class="divider"></li>
+	<li><a href="#modalExcluir">Excluir conta</a></li>
+</ul>
+<nav class="black">
+	<div class="nav-wrapper container">
+	  <a href="#" class="brand-logo">OnlineNote</a>
+	  <a href="#" data-activates="menu-mobile" class="button-collapse left"><i class="material-icons left">menu</i></a>
+	  <ul id="nav-mobile" class="right hide-on-med-and-down">
+	    <li><a class="dropdown-button" href="#!" data-activates="dropdown1" data-beloworigin="true"><i class="material-icons left">account_circle</i>{{ request.user.username }}<i class="material-icons right">arrow_drop_down</i></a></li>
+	  </ul>
+	  <ul id="menu-mobile" class="side-nav">
+        <li><a href="#!"><i class="material-icons left">account_circle</i>{{ request.user.username }}</a></li>
+        <li><a href="/logout/">Sair</a></li>
+		<li class="divider"></li>
+		<li><a href="#modalExcluir">Excluir conta</a></li>
+      </ul>
+
+	</div>
+</nav>
+
+<div id="modalExcluir" class="modal">
+	<div class="modal-content">
+		<h4>Excluir conta</h4>
+		<p>Ao confirmar esta ação, esta conta será desativada permanentemente.</p>
+	</div>
+	<div class="modal-footer">
+		
+		<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+		<a href="#!" class=" modal-action modal-close waves-effect red btn-flat">Ok</a>
+	</div>
+</div>
+
+
+{% else %}
+<!-- Dropdown Structure -->
+<nav class="black">
+	<div class="nav-wrapper container">
+	  <a href="#" class="brand-logo">OnlineNote</a>
+	  <a href="#" data-activates="menu-mobile" class="button-collapse left"><i class="material-icons left">menu</i></a>
+	  <ul id="nav-mobile" class="right hide-on-med-and-down">
+	    <li><a href="/"><i class="material-icons left">home</i>Início</a></li>
+	  </ul>
+	  <ul id="menu-mobile" class="side-nav">
+        <li><a href="/"><i class="material-icons left">home</i>Início</a></li>
+      </ul>
+
+	</div>
+</nav>
+{% endif %}
+<div class="content">
+{% block corpo %}
+	
+{% endblock corpo %}
+</div>
+
+   <footer class="page-footer black fot">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">OnlineNote</h5>
+            <p class="grey-text text-lighten-4">OnlineNote está aberto no repositório: <a href="https://github.com/diegofsousa/OnlineNote">github.com/diegofsousa/OnlineNote</a></p>
+
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Tecnologias usadas</h5>
+            <ul>
+              <li class="grey-text text-lighten-3" >Django Framework</li>
+              <li class="grey-text text-lighten-3" >Materialize</li>
+              <li class="grey-text text-lighten-3" >Heroku</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        Picos - Pi, 2017
+        </div>
+      </div>
+    </footer>
+
+	 <script src="{% static 'nota/js/jquery.min.js' %}"></script>
+	<!-- Compiled and minified JavaScript -->
+	  <script src="{% static 'nota/js/materialize.min.js' %}"></script>
+	  <script src="{% static 'nota/js/funcional.js' %}"></script>
+	  <script type="text/javascript">
+        $(".button-collapse").sideNav();
+        $(".dropdown-button").dropdown({ hover: false });
+        $('.modal').modal();
+      </script>
+</body>
+</html>

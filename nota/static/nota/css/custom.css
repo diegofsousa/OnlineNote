@@ -1,0 +1,26 @@
+/* uso do pace */
+/* This is a compiled file, you should be editing the file in the templates directory */
+@font-face {
+     font-family: 'VT323';
+     src: url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+;
+}
+
+body{
+	font-family: 'Ubuntu Mono', monospace;
+}
+
+.lin{
+	color: white;
+}
+
+.content {
+  min-height: calc(100vh - 70px);
+}
+.footer {
+  height: 50px;
+}
+
+.semfunc{
+	display: none;
+}
