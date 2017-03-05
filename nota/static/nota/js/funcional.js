@@ -85,6 +85,40 @@ $('#register').submit(function() {
 });
 
 
+function insere() {
+    console.log("apertado");
+    var value = $("#add").val();
+    $('.loadadd').removeClass("semfunc");
+    $.ajax({
+        url : "/add/",
+        type : "POST",
+        data : { 
+            value : value,
+             },
+
+        success : function(json) {
+            console.log("Resultado do processamento: "+json);
+            if (json == true) {
+                parent.window.document.location.href = '';
+            } else {
+                alert("Campo de nota está vazio");
+                $('.loadadd').addClass("semfunc");
+            }            
+        },
+
+        error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": " + xhr.responseText);
+           alert("Erro ao adicionar nota");
+           $('.loadadd').addClass("semfunc");
+
+        }
+    }); 
+        
+
+    return false;
+    
+}
+
 //Cookies globais padrões para utilização do AJAX
 
 function getCookie(name) {
