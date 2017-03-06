@@ -140,3 +140,4 @@ STATICFILES_DIRS = (
 )
 
 #deploy2
+#deploy done
