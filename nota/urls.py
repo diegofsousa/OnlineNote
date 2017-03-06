@@ -8,15 +8,10 @@ urlpatterns = [
    url(r'^$', views.home, name='home'),
    url(r'^autentica/$', views.entrar),
    url(r'^registra/$', views.register),
+   url(r'^deletaconta/$', views.deletaconta),
    url(r'^logout/$', views.make_logout),
    url(r'^add/$', views.add),
+   url(r'^remove/$', views.remove),
 
 
 ]
-
-
-#login
-#lista
-#inserir
-#excluir
-#logout

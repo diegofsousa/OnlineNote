@@ -1,5 +1,5 @@
 # -*- coding: utf 8 -*-
-from django.shortcuts import render, HttpResponse, redirect, Http404
+from django.shortcuts import render, HttpResponse, redirect, Http404, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
 from .models import User, Nota
 import json
@@ -66,4 +66,21 @@ def add(request):
 			return HttpResponse(json.dumps(False), content_type="application/json")
 		except Exception as e:
 			return HttpResponse(json.dumps(False), content_type="application/json")
+	raise Http404
+
+def remove(request):
+	if request.method == 'POST' and request.is_ajax():
+		try:
+			if request.POST.get('value') != "":
+				get_object_or_404(Nota, pk=request.POST.get('value')).delete()
+				return HttpResponse(json.dumps(True), content_type="application/json")
+			return HttpResponse(json.dumps(False), content_type="application/json")
+		except Exception as e:
+			return HttpResponse(json.dumps(False), content_type="application/json")
+	raise Http404
+
+def deletaconta(request):
+	if request.is_ajax():
+		request.user.delete()
+		return HttpResponse(json.dumps(True), content_type="application/json")
 	raise Http404

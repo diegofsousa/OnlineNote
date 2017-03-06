@@ -119,6 +119,56 @@ function insere() {
     
 }
 
+function remove(pk) {
+    console.log("remove");
+     $.ajax({
+        url : "/remove/",
+        type : "POST",
+        data : { 
+            value : pk,
+             },
+
+        success : function(json) {
+            console.log("Resultado do processamento: "+json);
+            if (json == true) {
+                parent.window.document.location.href = '';
+            } else {
+            }            
+        },
+
+        error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": " + xhr.responseText);
+
+        }
+    }); 
+        
+
+    return false;
+    
+}
+
+function delete_account(){
+    $.ajax({
+        url : "/deletaconta/",
+        type : "GET",
+        
+        success : function(json) {
+            if (json == true) {
+                parent.window.document.location.href = '';
+            } else {
+                alert("Something went wrong....");
+            }            
+        },
+
+        error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": " + xhr.responseText);
+           alert("Something went wrong.")
+
+        }
+    }); 
+       
+}
+
 //Cookies globais padrões para utilização do AJAX
 
 function getCookie(name) {
