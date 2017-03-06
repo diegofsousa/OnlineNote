@@ -139,4 +139,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'nota/static/'),
 )
 
-#deploy
+#deploy2
