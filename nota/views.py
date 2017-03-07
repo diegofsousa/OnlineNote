@@ -1,7 +1,7 @@
 # -*- coding: utf 8 -*-
 from django.shortcuts import render, HttpResponse, redirect, Http404, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
-from .models import User, Nota
+from .models import User, Nota, get_list_decoded
 import json
 
 
@@ -9,7 +9,7 @@ def home(request):
 	if not request.user.is_authenticated(): return login_user(request)
 	return render(request, 'nota/index.html',
 	{
-		'nota':Nota.objects.all()[::-1]
+		'nota':get_list_decoded(request.user)
 	})
 
 def login_user(request):

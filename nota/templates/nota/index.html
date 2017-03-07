@@ -5,13 +5,13 @@
 		<div class="col s12 m10 offset-m1 l10 offset-l1">
 			<ul class="collection with-header" id="lista">
 				{% for item in nota %}
-					<li class="collection-item"><a href="#modal{{ item.pk }}"><div>{{ item.data }} - <b style="color: black;">{{ item.texto|truncatechars:30 }}</b></a><a href="#" onclick="remove({{ item.pk }})" class="secondary-content"><i class="material-icons">clear</i></a></div></li>
+					<li class="collection-item"><a href="#modal{{ item.0 }}"><div>{{ item.2 }} - <b style="color: black;">{{ item.1|truncatechars:30 }}</b></a><a href="#" onclick="remove({{ item.0 }})" class="secondary-content"><i class="material-icons">clear</i></a></div></li>
 					 <!-- Modal Structure -->
-					  <div id="modal{{ item.pk }}" class="modal">
+					  <div id="modal{{ item.0 }}" class="modal">
 					    <div class="modal-content">
 					      <h4>Detalhe da nota</h4>
-					      <p>Cadastrado em <b>{{ item.data }}</b></p>
-					      <p>{{ item.texto }}</p>
+					      <p>Cadastrado em <b>{{ item.2 }}</b></p>
+					      <p>{{ item.1 }}</p>
 					    </div>
 					    <div class="modal-footer">
 					      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
